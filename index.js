@@ -22,6 +22,10 @@ async function main() {
 	}
 
 	let serverEndpoint = get_server(tld);
+	if (!serverEndpoint) {
+		console.error('[!]', 'TLD of .' + tld, 'has no server');
+		return 1;
+	}
 	if (!serverEndpoint.endsWith('/')) serverEndpoint += '/';
 	console.info('[i]', `Get server for .${tld}:`, serverEndpoint);
 
